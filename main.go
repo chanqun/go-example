@@ -2,14 +2,12 @@ package main
 
 import "fmt"
 
-func canIDrink(age int) bool {
-	if koreanAge := age + 2; koreanAge < 18 {
-		return false
-	}
-
-	return true
-}
-
 func main() {
-	fmt.Println(canIDrink(18))
+	a := 2
+	b := a  // copy value
+	c := &a // copy memory address
+
+	a = 4
+
+	fmt.Println(a, b, *c) // 4 2 4
 }
