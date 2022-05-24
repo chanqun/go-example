@@ -114,3 +114,19 @@ func main() {
 	fmt.Println(a, b, *c) // 4 2 4
 }
 ```
+
+### array
+크기를 명시해야 한다
+```go
+names := [5]string{"chanqun"}
+```
+
+### slice
+without length
+
+```go
+names := []string{"chanqun"}
+namse = append(names, "sung")
+```
+append return new slice
+
