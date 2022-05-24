@@ -130,3 +130,14 @@ namse = append(names, "sung")
 ```
 append return new slice
 
+### map
+
+```go
+mapA := map[string]string{"name": "chanqun", "age": "30"}
+	
+for key, value := range mapA {
+    fmt.Println(key, value)		
+}
+```
+
+
