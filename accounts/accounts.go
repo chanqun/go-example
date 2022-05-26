@@ -25,10 +25,12 @@ func (a Account) Balance() int {
 	return a.balance
 }
 
+var errNoMoney = errors.New("can't withdraw you are poor")
+
 // Withdraw withdraw
 func (a *Account) Withdraw(amount int) error {
 	if a.balance < amount {
-		return errors.New("can't withdraw you are poor")
+		return errNoMoney
 	}
 
 	a.balance -= amount
