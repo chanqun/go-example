@@ -70,33 +70,35 @@ execute code after function end
 
 ```go
 func superAdd(numbers ...int) int {
-    total := 0
+total := 0
 
-    for _, number := range numbers {
-        total += number
-    }
+for _, number := range numbers {
+total += number
+}
 
-    return total
+return total
 }
 ```
 
 ### if else
+
 if 안에 변수를 선언해서 잠시만 사용할 수 있다
 variable expression
 
 ```go
 func canIDrink(age int) bool {
-	if koreanAge := age + 2; koreanAge < 18 {
-		return false
-	}
+if koreanAge := age + 2; koreanAge < 18 {
+return false
+}
 
-	return true
+return true
 }
 ```
 
 ### switch
 
 ### pointers
+
 ```go
 package main
 
@@ -108,7 +110,7 @@ func main() {
 	c := &a // copy memory address
 
 	a = 4
-	
+
 	// *b = 20 using b update a
 
 	fmt.Println(a, b, *c) // 4 2 4
@@ -116,27 +118,31 @@ func main() {
 ```
 
 ### array
+
 크기를 명시해야 한다
+
 ```go
 names := [5]string{"chanqun"}
 ```
 
 ### slice
+
 without length
 
 ```go
 names := []string{"chanqun"}
 namse = append(names, "sung")
 ```
+
 append return new slice
 
 ### map
 
 ```go
 mapA := map[string]string{"name": "chanqun", "age": "30"}
-	
+
 for key, value := range mapA {
-    fmt.Println(key, value)		
+fmt.Println(key, value)
 }
 ```
 
@@ -144,16 +150,16 @@ for key, value := range mapA {
 
 ```go
 type person struct {
-	name    string
-	age     int
-	favFood []string
+name    string
+age     int
+favFood []string
 }
 
 func main() {
-	favFood := []string{"kimchi", "don"}
-	chanqun := person{age: 18, name: "chanqun", favFood: favFood}
+favFood := []string{"kimchi", "don"}
+chanqun := person{age: 18, name: "chanqun", favFood: favFood}
 
-	fmt.Println(chanqun)
+fmt.Println(chanqun)
 }
 
 ```
@@ -176,3 +182,31 @@ func NewAccount(owner string) *Account {
 	return &account
 }
 ```
+
+### *
+
+```go
+func (a *Account) Deposit(amount int) { // don't copy Account
+a.balance += amount
+}
+```
+
+### error
+
+error or nil
+```go
+// Withdraw withdraw
+func (a *Account) Withdraw(amount int) error {
+	if a.balance < amount {
+		return errors.New("can't withdraw you are poor")
+	}
+
+	a.balance -= amount
+	return nil
+}
+
+if err != nil {
+    log.Fatalln(err) // print and exit
+}
+```
+
