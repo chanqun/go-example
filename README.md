@@ -269,3 +269,42 @@ func hitUrl(url string) error {
 }
 
 ```
+
+### goroutine
+
+```go
+func main() {
+	go sexyCount("chanqun")
+	sexyCount("sungmin")
+}
+
+func sexyCount(person string) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(person, "is sexy", i)
+		time.Sleep(time.Second)
+	}
+}
+
+```
+
+### channel
+```go
+func main() {
+	c := make(chan bool)
+	people := [2]string{"chanqun", "sungmin"}
+
+	for _, person := range people {
+		go isSexy(person, c)
+	}
+
+	result := <-c
+	result2 := <-c
+
+	fmt.Println(result, result2)
+}
+
+func isSexy(person string, c chan bool) {
+	time.Sleep(time.Second * 3)
+	c <- true
+}
+```
