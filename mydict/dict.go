@@ -22,8 +22,20 @@ func (d Dictionary) Search(word string) (string, error) {
 func (d Dictionary) Add(word, def string) error {
 	_, err := d.Search(word)
 
-	if err == errNotFound {
+	if err != errNotFound {
 		return errAlreadyExists
+	}
+
+	d[word] = def
+
+	return nil
+}
+
+func (d Dictionary) Update(word, def string) error {
+	_, err := d.Search(word)
+
+	if err == errNotFound {
+		return err
 	}
 
 	d[word] = def
