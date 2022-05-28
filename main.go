@@ -11,11 +11,11 @@ func main() {
 
 	account.Deposit(100)
 
-	err := account.Withdraw(200)
+	err := account.Withdraw(20)
 
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(account.Balance())
+	fmt.Println(account)
 }
