@@ -2,20 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/chanqun/go-example/accounts"
-	"log"
+	"github.com/chanqun/go-example/mydict"
 )
 
 func main() {
-	account := accounts.NewAccount("chanqun")
+	dictionary := mydict.Dictionary{"first": "First word"}
 
-	account.Deposit(100)
-
-	err := account.Withdraw(20)
+	definition, err := dictionary.Search("second")
 
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 
-	fmt.Println(account)
+	fmt.Println(definition)
 }
