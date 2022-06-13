@@ -34,12 +34,10 @@ func main() {
 	// 행,열 읽기
 	for i, row := range rows {
 		open, _ := strconv.Atoi(row[2])
-		close, _ := strconv.Atoi(row[3])
+		high, _ := strconv.Atoi(row[3])
+		low, _ := strconv.Atoi(row[4])
+		close, _ := strconv.Atoi(row[5])
 
-		fmt.Println(i, open, close)
-
-		if i == 2 {
-			break
-		}
+		fmt.Println(i, open, high, low, close)
 	}
 }
