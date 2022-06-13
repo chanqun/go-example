@@ -5,9 +5,20 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	"strconv"
 )
 
+type data struct {
+	date  string
+	open  int
+	high  int
+	low   int
+	close int
+}
+
 func main() {
+	//var datas []data
+
 	file, err := os.Open("day/000120.csv")
 
 	if err != nil {
@@ -22,9 +33,13 @@ func main() {
 
 	// 행,열 읽기
 	for i, row := range rows {
-		for j := range row {
-			fmt.Printf("%s ", rows[i][j])
+		open, _ := strconv.Atoi(row[2])
+		close, _ := strconv.Atoi(row[3])
+
+		fmt.Println(i, open, close)
+
+		if i == 2 {
+			break
 		}
-		fmt.Println()
 	}
 }
